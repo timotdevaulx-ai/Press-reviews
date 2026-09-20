@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revue de presse — The Anglo-Saxon World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f3ec;
+    --ink:#1c1a17;
+    --ink-soft:#4a463f;
+    --rule:#d9d3c4;
+    --card:#fffdf8;
+    --masthead:#22201b;
+    --red:#9c2b2b;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+
+  header.masthead{
+    background:var(--masthead);
+    color:var(--paper);
+    padding:2.6rem 1.4rem 2rem;
+    text-align:center;
+    border-bottom:6px solid var(--red);
+  }
+  header.masthead .kicker{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    color:#c9c2b0;
+    margin-bottom:0.6rem;
+  }
+  header.masthead h1{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:clamp(2.1rem, 5vw, 3.2rem);
+    margin:0 0 0.5rem;
+    letter-spacing:-0.01em;
+  }
+  header.masthead p.dates{
+    font-family:'Newsreader', serif;
+    font-size:1.05rem;
+    color:#d8d2c2;
+    margin:0;
+  }
+
+  .tools{
+    max-width:760px;
+    margin:0 auto;
+    padding:1rem 1.2rem 0;
+  }
+  .search-wrap{
+    position:relative;
+    margin-bottom:0.8rem;
+  }
+  .search-wrap input{
+    width:100%;
+    padding:0.78rem 1rem 0.78rem 2.65rem;
+    border:1px solid var(--rule);
+    border-radius:5px;
+    background:var(--card);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.9rem;
+    outline:none;
+    transition:border-color 0.15s, box-shadow 0.15s;
+  }
+  .search-wrap input:focus{
+    border-color:#8b8578;
+    box-shadow:0 0 0 2px rgba(139,133,120,0.12);
+  }
+  .search-icon{
+    position:absolute;
+    left:0.95rem;
+    top:50%;
+    transform:translateY(-50%);
+    color:#8b8578;
+    font-size:1rem;
+    pointer-events:none;
+  }
+
+  .filter-label{
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:#8b8578;
+    margin:0.35rem 0 0.35rem;
+    font-weight:600;
+  }
+  nav.themebar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--rule);
+    padding:0.7rem 1rem;
+    display:flex;
+    gap:0.5rem;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav.themebar::-webkit-scrollbar{display:none;}
+  nav.themebar button{
+    flex:0 0 auto;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.82rem;
+    font-weight:600;
+    padding:0.5rem 0.9rem;
+    border-radius:999px;
+    border:1.5px solid var(--rule);
+    background:var(--card);
+    color:var(--ink-soft);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  nav.themebar button.active{
+    color:#fff;
+    border-color:transparent;
+  }
+
+  .countrybar{
+    display:flex;
+    gap:0.45rem;
+    overflow-x:auto;
+    padding:0.05rem 0 0.75rem;
+    -webkit-overflow-scrolling:touch;
+  }
+  .countrybar::-webkit-scrollbar{display:none;}
+  .countrybar button{
+    flex:0 0 auto;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.76rem;
+    font-weight:600;
+    padding:0.4rem 0.72rem;
+    border-radius:999px;
+    border:1px solid var(--rule);
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .countrybar button.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+
+  main{
+    max-width:760px;
+    margin:0 auto;
+    padding:1.8rem 1.2rem 5rem;
+  }
+
+  section.theme{
+    margin-bottom:3.4rem;
+    scroll-margin-top:4.4rem;
+  }
+  section.theme .theme-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.65rem;
+    margin-bottom:1.1rem;
+    padding-bottom:0.55rem;
+    border-bottom:2.5px solid var(--rule);
+  }
+  section.theme .theme-dot{
+    width:12px; height:12px;
+    border-radius:50%;
+    flex:0 0 auto;
+  }
+  section.theme h2{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    font-size:1.55rem;
+    margin:0;
+  }
+  section.theme .count{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-left:auto;
+  }
+
+  article.item{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-left-width:4px;
+    border-radius:3px;
+    padding:1.1rem 1.25rem;
+    margin-bottom:0.9rem;
+  }
+  article.item .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
+    align-items:center;
+    font-size:0.74rem;
+    color:var(--ink-soft);
+    margin-bottom:0.5rem;
+  }
+  article.item .country{
+    font-weight:600;
+    padding:0.12rem 0.55rem;
+    border-radius:999px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+  }
+  article.item .date{
+    font-style:italic;
+    font-family:'Newsreader', serif;
+  }
+  article.item .source{
+    color:#8b8578;
+  }
+  article.item p{
+    margin:0;
+    font-size:0.99rem;
+    color:var(--ink);
+  }
+  article.item p .lead{
+    font-family:'Newsreader', serif;
+    font-weight:700;
+    font-style:italic;
+  }
+
+  .translation{
+    display:none;
+    margin-top:0.95rem;
+    padding-top:0.85rem;
+    border-top:1px solid var(--rule);
+    color:var(--ink-soft);
+    font-family:'Newsreader', serif;
+    font-size:1rem;
+  }
+  .translation.visible{display:block;}
+  .translation-label{
+    display:block;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.68rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:#8b8578;
+    margin-bottom:0.25rem;
+  }
+  .translate-btn{
+    margin-top:0.8rem;
+    border:1px solid var(--rule);
+    background:var(--paper);
+    color:var(--ink-soft);
+    border-radius:3px;
+    padding:0.4rem 0.7rem;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.73rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .translate-btn:hover{
+    background:#ece8df;
+  }
+
+  .no-results{
+    text-align:center;
+    padding:3rem 1rem;
+    color:var(--ink-soft);
+    font-family:'Newsreader', serif;
+    font-size:1.15rem;
+  }
+
+  footer{
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    padding:1.5rem 1rem 3rem;
+  }
+
+
+  .article-head{
+    display:flex;
+    align-items:flex-start;
+    gap:0.7rem;
+  }
+  .article-head > p{flex:1;}
+  .favorite-btn{
+    flex:0 0 auto;
+    width:2rem;
+    height:2rem;
+    border:1px solid var(--rule);
+    border-radius:50%;
+    background:var(--paper);
+    color:#8b8578;
+    cursor:pointer;
+    font-size:1.05rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+  }
+  .favorite-btn:hover{transform:scale(1.06);}
+  .favorite-btn.active{
+    background:#f1d76a;
+    color:#5d4d00;
+    border-color:#d3bb4c;
+  }
+  .view-tools{
+    display:flex;
+    align-items:center;
+    gap:0.45rem;
+    flex-wrap:wrap;
+    margin:0.1rem 0 0.75rem;
+  }
+  .view-label{
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    color:#8b8578;
+    font-weight:600;
+    margin-right:0.15rem;
+  }
+  .view-btn, .vocab-open-btn{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.76rem;
+    font-weight:600;
+    padding:0.4rem 0.72rem;
+    border-radius:999px;
+    border:1px solid var(--rule);
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .view-btn.active, .vocab-open-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .vocab-panel{
+    display:none;
+    margin:0 0 1rem;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:5px;
+    padding:1rem;
+  }
+  .vocab-panel.visible{display:block;}
+  .vocab-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.6rem;
+    margin-bottom:0.8rem;
+  }
+  .vocab-head h2{
+    font-family:'Newsreader', serif;
+    font-size:1.45rem;
+    margin:0;
+  }
+  .vocab-count{
+    color:var(--ink-soft);
+    font-size:0.75rem;
+  }
+  .vocab-empty{
+    color:var(--ink-soft);
+    font-family:'Newsreader', serif;
+    font-size:1rem;
+  }
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    gap:0.45rem;
+  }
+  .vocab-item{
+    display:flex;
+    align-items:center;
+    gap:0.65rem;
+    padding:0.55rem 0.65rem;
+    border:1px solid var(--rule);
+    background:var(--paper);
+    border-radius:3px;
+  }
+  .vocab-word{
+    font-weight:700;
+    flex:1;
+  }
+  .vocab-arrow{color:#8b8578;}
+  .vocab-translation{font-family:'Newsreader', serif; flex:1;}
+  .vocab-delete{
+    border:0;
+    background:transparent;
+    color:#8b8578;
+    cursor:pointer;
+    font-size:0.9rem;
+  }
+  .selection-popover{
+    position:fixed;
+    z-index:100;
+    display:none;
+    background:var(--masthead);
+    color:var(--paper);
+    border-radius:5px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.22);
+    padding:0.35rem;
+  }
+  .selection-popover.visible{display:block;}
+  .selection-popover button{
+    border:0;
+    background:transparent;
+    color:var(--paper);
+    padding:0.45rem 0.65rem;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.76rem;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .selection-popover button:hover{background:#34312a;border-radius:3px;}
+  .search-highlight{
+    background:#ffe66d;
+    color:inherit;
+    padding:0 2px;
+    border-radius:2px;
+  }
+
+  @media (max-width:480px){
+    header.masthead{padding:2rem 1rem 1.6rem;}
+    article.item{padding:0.9rem 1rem;}
+    .tools{padding-left:1rem;padding-right:1rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">PRESS REVIEW · COMPILATION ECRICOM</div>
+  <h1>The Anglo-Saxon World</h1>
+  <p class="dates">29 juin — 13 septembre 2026</p>
+</header>
+
+<div class="tools">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input id="search" type="search" placeholder="Rechercher un article, un pays, un mot..." autocomplete="off">
+  </div>
+
+  <div class="view-tools">
+    <span class="view-label">Articles</span>
+    <button class="view-btn active" id="show-all-btn">Tous</button>
+    <button class="view-btn" id="show-favorites-btn">⭐ Favoris</button>
+    <button class="vocab-open-btn" id="vocab-open-btn">📚 Mon vocabulaire</button>
+  </div>
+
+  <div class="vocab-panel" id="vocab-panel">
+    <div class="vocab-head">
+      <h2>Mon vocabulaire</h2>
+      <span class="vocab-count" id="vocab-count"></span>
+    </div>
+    <div class="vocab-list" id="vocab-list"></div>
+  </div>
+
+  <div class="filter-label">Pays</div>
+  <div class="countrybar" id="countrybar"></div>
+</div>
+
+<nav class="themebar" id="themebar"></nav>
+
+<main id="main"></main>
+
+<div class="selection-popover" id="selection-popover">
+  <button id="add-vocab-btn">Ajouter au vocabulaire</button>
+</div>
+
+<footer>Textes reproduits tels quels, classés par thème et par ordre chronologique.</footer>
+
+<script>
+const THEMES = [
+  {
+    id:'politics', name:'Politique & Institutions', color:'#9c2b2b',
+    items:[
+      {country:'États-Unis', date:'11 septembre 2026', source:'The Economist', lead:'US – 9/11 2001.', body:`America mourns those killed in the 9/11 attacks. Donald Trump will attend a ceremony at the Pentagon to mark 25 years since the atrocity; services will also take place in Manhattan and Somerset County, Pennsylvania, where one of the hijacked planes crashed. Patriot Day, as September 11th is now known, unites America. But the country’s response to the attacks still causes division: only 48% of Americans think the wars and surveillance that followed were worth the cost. To the dismay of many, the extensive counter-terror apparatus enacted after 9/11 remains largely in place.`, translation:`L’Amérique rend hommage aux personnes tuées lors des attentats du 11 septembre. Donald Trump assistera à une cérémonie au Pentagone pour marquer les 25 ans de l’attentat ; des cérémonies auront également lieu à Manhattan et dans le comté de Somerset, en Pennsylvanie, où s’est écrasé l’un des avions détournés. Le Patriot Day, comme est désormais appelé le 11 septembre, rassemble les Américains. Mais la réponse du pays aux attentats continue de diviser : seuls 48 % des Américains estiment que les guerres et la surveillance qui ont suivi en valaient le coût. Au grand regret de nombreux Américains, l’appareil antiterroriste mis en place après le 11 septembre reste largement en vigueur.`},
+      {country:'États-Unis', date:'11 septembre 2026', source:'The Economist', lead:'US – Mail-in voting.', body:`An appeals court in Boston rejected D. Trump’s plans to tighten postal-voting requirements before the midterm elections in November, confirming a lower court’s injunction against the president’s executive order. Mr Trump sought to instate more stringent rules across America for voter registration and ballot design. The Supreme Court is mulling a similar request.`, translation:`Une cour d’appel de Boston a rejeté les projets de D. Trump visant à durcir les conditions du vote par correspondance avant les élections de mi-mandat de novembre, confirmant l’injonction d’un tribunal inférieur contre le décret présidentiel. M. Trump cherchait à instaurer des règles plus strictes à travers l’Amérique concernant l’inscription des électeurs et la conception des bulletins. La Cour suprême examine une demande similaire.`},
+      {country:'États-Unis', date:'11 septembre 2026', source:'NPR', lead:'US – GOP midterm convention.', body:`During his GOP midterm convention speech, President Trump promised a $5,000 dividend to every adult citizen if the Republican Party maintains control of Congress in the upcoming election. The president gave scant details on where this money would come from during his more than 90-minute address. Implementing such payments could cost $1 trillion or more. D. Trump’s speech wasn’t far from his typical rally themes. He discussed tariffs, the importance of dismantling Iran’s nuclear program and the need for a bill to restrict voter identification and registration requirements.`, translation:`Lors de son discours à la convention républicaine consacrée aux élections de mi-mandat, le président Trump a promis un dividende de 5 000 dollars à chaque citoyen adulte si le Parti républicain conserve le contrôle du Congrès lors de la prochaine élection. Le président a donné peu de détails sur l’origine de cet argent au cours de son discours de plus de 90 minutes. La mise en œuvre de tels versements pourrait coûter 1 000 milliards de dollars ou davantage. Le discours de D. Trump était proche de ses thèmes de campagne habituels. Il a parlé des droits de douane, de l’importance de démanteler le programme nucléaire iranien et de la nécessité d’une loi visant à restreindre les conditions d’identification et d’inscription des électeurs.`},
+
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Independence Day rhetoric.', body:`Marking the country's 250th birthday on the National Mall, President Trump hailed America as “the crowning achievement of human history”, cast his political opponents as “communists”, and touted electoral changes framed as a defence against “cheating”.`, translation:`À l'occasion du 250e anniversaire du pays, sur le National Mall, le président Trump a présenté l'Amérique comme « l'aboutissement de l'histoire humaine », a qualifié ses adversaires politiques de « communistes » et a vanté des changements électoraux présentés comme une défense contre la « triche ».`},
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'The Supreme Court.', body:`The justices dealt Mr Trump a rare rebuff by blocking his executive order denying birthright citizenship to the children of undocumented migrants, while separately upholding states' right to ban transgender athletes from women's university and school sport. In further rulings, the court granted the president sweeping authority to dismiss the heads of independent agencies, the Federal Reserve excepted.`, translation:`Les juges ont infligé à M. Trump un rare revers en bloquant son décret refusant la citoyenneté de naissance aux enfants de migrants sans papiers, tout en confirmant séparément le droit des États d'interdire aux athlètes transgenres de participer aux compétitions sportives universitaires et scolaires féminines. Dans d'autres décisions, la Cour a accordé au président un large pouvoir pour révoquer les dirigeants d'agences indépendantes, à l'exception de la Réserve fédérale.`},
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Legislative wrangling.', body:`The 21st Century Road to Housing Act, aimed at boosting homebuilding, became law without Mr Trump's signature after he tied his approval to a separate voter-citizenship bill.`, translation:`Le 21st Century Road to Housing Act, destiné à stimuler la construction de logements, est devenu une loi sans la signature de M. Trump après que celui-ci a conditionné son approbation à un autre projet de loi sur la citoyenneté des électeurs.`},
+      {country:'Royaume-Uni', date:'29 juin – 26 juillet 2026', lead:'Change of government.', body:`Sir Keir Starmer unveiled a long-delayed defence-investment plan, including £5bn for drone development, in one of his final acts before Andy Burnham was confirmed as Labour leader and, days later, as prime minister. Mr Burnham pledged greater devolution and public control over “the cost of essentials”, denouncing the centralisation and privatisation of the 1980s, before naming his cabinet: John Healey, a surprise pick, became chancellor, Ed Miliband foreign secretary, and Shabana Mahmoud remained home secretary.`, translation:`Sir Keir Starmer a présenté un plan d'investissement dans la défense, longtemps retardé, comprenant notamment 5 milliards de livres pour le développement de drones, lors de l'un de ses derniers actes avant qu'Andy Burnham ne soit confirmé comme chef du Parti travailliste puis, quelques jours plus tard, comme Premier ministre. M. Burnham a promis davantage de décentralisation et un contrôle public du « coût des biens essentiels », dénonçant la centralisation et les privatisations des années 1980, avant de nommer son gouvernement : John Healey, choix surprise, est devenu chancelier, Ed Miliband ministre des Affaires étrangères et Shabana Mahmoud est restée ministre de l'Intérieur.`},
+      {country:'Royaume-Uni', date:'29 juin – 26 juillet 2026', lead:'Reform UK.', body:`Nigel Farage's populist-right party continued to top the polls even as its leader faced mounting ethics troubles, referred to Parliament's standards watchdog over undeclared benefits from a political ally, on top of an existing probe into an unreported £5m gift, which he denies improperly receiving.`, translation:`Le parti de droite populiste de Nigel Farage a continué de dominer les sondages alors que son dirigeant faisait face à des problèmes éthiques croissants. Il a été renvoyé devant l'organisme parlementaire chargé des normes en raison d'avantages non déclarés provenant d'un allié politique, en plus d'une enquête déjà en cours sur un don de 5 millions de livres non déclaré, qu'il nie avoir reçu de manière irrégulière.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Domestic politics.', body:`President Trump signed two executive orders reviving his assault on birthright citizenship, barely weeks after the Supreme Court struck down his earlier attempt; one strips citizenship rights from children born to members of designated “Foreign Terrorist Organisations”, the other targets so-called “birth tourism”. Both face swift legal challenges. The Supreme Court separately allowed construction of a contentious $400m White House ballroom to proceed.`, translation:`Le président Trump a signé deux décrets relançant son offensive contre la citoyenneté de naissance, à peine quelques semaines après que la Cour suprême eut rejeté sa précédente tentative. L'un retire les droits à la citoyenneté aux enfants nés de membres d'« organisations terroristes étrangères » désignées, tandis que l'autre vise le « tourisme de naissance ». Les deux mesures font rapidement l'objet de recours judiciaires. La Cour suprême a par ailleurs autorisé la poursuite de la construction controversée d'une salle de bal de 400 millions de dollars à la Maison-Blanche.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Congress & justice.', body:`A Senate committee voted to hold Anthony Fauci, the government's former top pandemic adviser, in contempt after he refused to answer questions about his handling of covid-19; a pre-emptive pardon from Joe Biden may yet shield him from prosecution.`, translation:`Une commission du Sénat a voté pour déclarer Anthony Fauci, ancien principal conseiller du gouvernement sur la pandémie, coupable d'outrage après son refus de répondre à des questions sur sa gestion du Covid-19. Une grâce préventive accordée par Joe Biden pourrait néanmoins encore le protéger de poursuites.`},
+      {country:'Royaume-Uni', date:'27 juillet – 23 août 2026', lead:'Domestic politics.', body:`Nigel Farage, leader of the populist Reform UK party, triumphed in a Clacton by-election he himself had triggered - a result critics dismissed as a stunt to deflect scrutiny from an undeclared £5m gift. Prime Minister Andy Burnham, meanwhile, was embroiled in a security scare after exchanging text messages with an impostor posing as Susie Wiles, Donald Trump's chief of staff; Downing Street declined to elaborate, citing national-security sensitivities.`, translation:`Nigel Farage, dirigeant du parti populiste Reform UK, a remporté une élection partielle à Clacton qu'il avait lui-même provoquée, un résultat que ses critiques ont qualifié de coup médiatique destiné à détourner l'attention d'un don de 5 millions de livres non déclaré. Le Premier ministre Andy Burnham a quant à lui été mêlé à une alerte de sécurité après avoir échangé des SMS avec un imposteur se faisant passer pour Susie Wiles, la cheffe de cabinet de Donald Trump ; Downing Street a refusé de donner davantage de détails, invoquant des questions de sécurité nationale.`},
+      {country:'États-Unis', date:'26 août 2026', source:'The Economist', lead:'US – Immigrant visas.', body:`The Trump administration suspended applications for immigrant visas globally while consular officers are trained to screen out individuals that might need public assistance. Part of a wider crackdown on immigration, the government claimed the measures would ensure a “more prosperous America”.`, translation:`L'administration Trump a suspendu dans le monde entier les demandes de visas d'immigrant pendant que les agents consulaires sont formés à écarter les personnes susceptibles d'avoir besoin d'aides publiques. S'inscrivant dans un durcissement plus large de la politique migratoire, le gouvernement affirme que ces mesures permettront d'assurer une « Amérique plus prospère ».`},
+      {country:'États-Unis', date:'4 septembre 2026', source:'NPR', lead:'US – DEI programmes.', body:`The IRS has proposed a rule that would revoke the tax-exempt status of private schools and colleges that have programs designed to help students based on race. Many institutions currently offer programs to support Black or Latino students who may be the first in their families to attend college. Some also aim to foster a diverse student body by offering scholarships and other initiatives. The administration argues these programs amount to racial discrimination. The IRS has not clarified how it plans to identify schools with programs it disapproves of, but it estimates that about 18,000 private schools could be affected.`, translation:`L'IRS a proposé une règle qui retirerait le statut d'exonération fiscale aux écoles et universités privées ayant des programmes destinés à aider les étudiants en fonction de leur origine raciale. De nombreux établissements proposent actuellement des programmes pour soutenir les étudiants noirs ou latino-américains qui pourraient être les premiers de leur famille à aller à l'université. Certains cherchent également à favoriser la diversité des étudiants grâce à des bourses et à d'autres initiatives. L'administration estime que ces programmes constituent une discrimination raciale. L'IRS n'a pas précisé comment il comptait identifier les établissements concernés, mais estime qu'environ 18 000 écoles privées pourraient être touchées.`},
+      {country:'États-Unis', date:'4 septembre 2026', source:'NPR', lead:'US – Mail-in voting.', body:`For now, mail-in voting is still available to all voters who are eligible for it in their states. Election officials and voters are concerned that major disruptions to the midterms could occur if the Supreme Court allows the plan to move forward. Many election officials say it is too late to carry out the plan. The administration did not meet its own deadline today to publish its state-by-state lists of eligible voters.`, translation:`Pour l'instant, le vote par correspondance reste disponible pour tous les électeurs qui y ont droit dans leur État. Les responsables électoraux et les électeurs craignent que les élections de mi-mandat connaissent d'importantes perturbations si la Cour suprême autorise la mise en œuvre du projet. De nombreux responsables électoraux estiment qu'il est désormais trop tard pour appliquer ce plan. L'administration n'a pas respecté aujourd'hui son propre délai pour publier ses listes d'électeurs éligibles État par État.`},
+    ]
+  },
+  {
+    id:'intl', name:'Relations Internationales, Commerce & Défense', color:'#1d6fa5',
+    items:[
+      {country:'États-Unis – Canada', date:'8 septembre 2026', source:'The New York Times', lead:'US – Canada.', body:`President Trump decided to ban a small set of imports from Canada, including some alcoholic beverages, dairy byproducts and molasses, in a drastic escalation of a bilateral trade war that risked economic blowback on both sides of the border. The limited ban, which is set to take effect on 29th September, was part of a series of retaliatory measures that the White House announced in the hours after Canada imposed new tariffs up to 50 percent on around $20bn of a variety of American goods. While Mr Trump’s move appeared to encompass only a small portion of trade between the countries, it amounted to a remarkable attempt to punish a close American ally, mere weeks after trade talks between the two neighbors collapsed in acrimony.`, translation:`Le président Trump a décidé d’interdire un petit nombre d’importations en provenance du Canada, notamment certaines boissons alcoolisées, des sous-produits laitiers et de la mélasse, dans une forte escalade d’une guerre commerciale bilatérale qui risquait d’entraîner des conséquences économiques pour les deux côtés de la frontière. L’interdiction limitée, qui doit entrer en vigueur le 29 septembre, faisait partie d’une série de mesures de représailles annoncées par la Maison-Blanche dans les heures qui ont suivi l’imposition par le Canada de nouveaux droits de douane allant jusqu’à 50 % sur environ 20 milliards de dollars de produits américains. Alors que la mesure de M. Trump semblait ne concerner qu’une petite partie des échanges entre les deux pays, elle constituait une tentative remarquable de punir un proche allié américain, quelques semaines seulement après l’échec acrimonieux des négociations commerciales entre les deux voisins.`},
+      {country:'UE – Groenland', date:'7 septembre 2026', source:'The Economist', lead:'EU – Greenland.', body:`The European Commission revealed plans to invest €200m in Greenland. The announcement followed a two-day visit by Ursula von der Leyen, the commission’s president, to the Danish territory, which Donald Trump claims should be controlled by America. The investments would chiefly be funnelled towards critical minerals, renewables and satellites.`, translation:`La Commission européenne a annoncé des projets d’investissement de 200 millions d’euros au Groenland. Cette annonce faisait suite à une visite de deux jours d’Ursula von der Leyen, la présidente de la Commission, dans ce territoire danois que Donald Trump affirme devoir être contrôlé par l’Amérique. Les investissements seraient principalement consacrés aux minerais critiques, aux énergies renouvelables et aux satellites.`},
+
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Trade deals.', body:`Rather than renew its trilateral pact with Canada and Mexico for another sixteen years, the Trump administration opted to negotiate separate bilateral deals, souring on an agreement Mr Trump once called “the best we've ever made”. At a NATO summit in Turkey, the president threatened to “cut off” trade with Spain over its defence spending and revived his ambition to seize Greenland, prompting several European allies to launch a $50bn missile-development project explicitly excluding American involvement.`, translation:`Plutôt que de renouveler pour seize ans supplémentaires son pacte trilatéral avec le Canada et le Mexique, l'administration Trump a choisi de négocier des accords bilatéraux distincts, se détournant d'un accord que M. Trump avait autrefois qualifié de « meilleur que nous ayons jamais conclu ». Lors d'un sommet de l'OTAN en Turquie, le président a menacé de « couper » les échanges commerciaux avec l'Espagne en raison de ses dépenses militaires et a relancé son ambition de s'emparer du Groenland, poussant plusieurs alliés européens à lancer un projet de développement de missiles de 50 milliards de dollars excluant explicitement toute participation américaine.`},
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Tariff diplomacy.', body:`Mr Trump imposed a fresh 50% tariff on Canadian goods over what he called “discriminatory treatment”, invoking a rarely used clause of the 1930 Tariff Act, while a separate global levy of 10–12% hit sixty countries.`, translation:`M. Trump a imposé un nouveau droit de douane de 50 % sur les produits canadiens en raison de ce qu'il a qualifié de « traitement discriminatoire », en invoquant une clause rarement utilisée du Tariff Act de 1930, tandis qu'une taxe mondiale distincte de 10 à 12 % a touché soixante pays.`},
+      {country:'Canada', date:'29 juin – 26 juillet 2026', lead:'Energy strategy.', body:`Prime Minister Mark Carney announced Alberta's plans for a 1,000km pipeline to Canada's Pacific coast, billed as a “gateway” to Asian markets and a means of weaning the country off near-total dependence on American energy demand.`, translation:`Le Premier ministre Mark Carney a annoncé les projets de l'Alberta pour construire un oléoduc de 1 000 km jusqu'à la côte pacifique du Canada, présenté comme une « porte d'entrée » vers les marchés asiatiques et comme un moyen de réduire la dépendance presque totale du pays à la demande énergétique américaine.`},
+      {country:'Europe', date:'29 juin – 26 juillet 2026', lead:'Defence.', body:`Ukraine and nine European states, meeting in Paris as the “coalition of the willing”, agreed to build a shared ballistic-missile defence system drawing on Ukrainian battlefield experience; President Macron warned against “fragmentation” in Europe's defence industry.`, translation:`L'Ukraine et neuf États européens, réunis à Paris au sein de la « coalition des volontaires », ont convenu de construire un système commun de défense antimissile balistique s'appuyant sur l'expérience ukrainienne du champ de bataille. Le président Macron a mis en garde contre la « fragmentation » de l'industrie européenne de défense.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Migration & foreign policy.', body:`Roughly 330,000 Haitians began losing Temporary Protected Status, exposing them to deportation despite worsening gang violence at home, after the Supreme Court cleared the administration to end the programme. On the diplomatic front, Mr Trump claimed his “Board of Peace” had secured Hamas's agreement to disarm fully in Gaza — conditional on an Israeli withdrawal Israel has yet to confirm.`, translation:`Environ 330 000 Haïtiens ont commencé à perdre leur statut de protection temporaire, les exposant à l'expulsion malgré l'aggravation des violences liées aux gangs dans leur pays, après que la Cour suprême a autorisé l'administration à mettre fin au programme. Sur le front diplomatique, M. Trump a affirmé que son « Board of Peace » avait obtenu l'accord du Hamas pour un désarmement complet à Gaza, sous condition d'un retrait israélien qu'Israël n'a pas encore confirmé.`},
+      {country:'Canada', date:'27 juillet – 23 août 2026', lead:'Trade diplomacy.', body:`Prime Minister Mark Carney vowed to retaliate “dollar for dollar” against a new 50% American tariff on some $20bn of Canadian goods, after last-minute trade talks collapsed.`, translation:`Le Premier ministre Mark Carney a promis de riposter « dollar pour dollar » à un nouveau droit de douane américain de 50 % sur environ 20 milliards de dollars de produits canadiens, après l'échec de négociations commerciales de dernière minute.`},
+      {country:'Europe', date:'27 juillet – 23 août 2026', lead:'Migration crisis.', body:`More than 50,000 people crossed into Ceuta, Spain's North African exclave, prompting Madrid to accuse fellow EU leaders of a “selfish, polarising” response and forcing an emergency meeting of interior ministers; commission president Ursula von der Leyen called for the bloc's external borders to be reinforced.`, translation:`Plus de 50 000 personnes sont entrées à Ceuta, l'enclave espagnole d'Afrique du Nord, poussant Madrid à accuser les autres dirigeants de l'UE d'une réaction « égoïste et polarisante » et provoquant une réunion d'urgence des ministres de l'Intérieur. La présidente de la Commission, Ursula von der Leyen, a appelé à renforcer les frontières extérieures du bloc.`},
+      {country:'États-Unis & Canada', date:'27 juillet – 23 août 2026', lead:'Tariffs.', body:`Washington's tariff offensive continued to reshape North American trade, with Canada's retaliatory measures set to take effect in early September. The administration also banned imports of Chinese-made humanoid robots and foreign power inverters on national-security grounds, arguing such devices could be used to “surveil Americans” — a claim Beijing has yet to answer.`, translation:`L'offensive douanière de Washington a continué de transformer le commerce nord-américain, les mesures de représailles du Canada devant entrer en vigueur début septembre. L'administration a également interdit les importations de robots humanoïdes fabriqués en Chine et de convertisseurs électriques étrangers pour des raisons de sécurité nationale, affirmant que ces appareils pourraient être utilisés pour « surveiller les Américains », une accusation à laquelle Pékin n'a pas encore répondu.`},
+      {country:'États-Unis – Canada', date:'24 / 26 août 2026', source:'The Economist', lead:'US - Canada.', body:`Donald Trump said America will raise tariffs on Canadian cars, automotive parts and steel to 50%, beginning on January 1st, further escalating a dispute after trade negotiations collapsed last week. America had already imposed 50% tariffs on $20bn worth of Canadian goods. Canada announced retaliatory tariffs from September 8th, matching those imposed by America. Canada will double existing tariffs on steel and aluminium to 50% and impose levies of between 15% and 50% on goods such as furniture, clothing, dairy and machinery. With America's economy 13 times larger than Canada's, and thus far better equipped to cope, Mark Carney will be keen to avoid an all-out trade war.`, translation:`Donald Trump a déclaré que les États-Unis porteraient à 50 % les droits de douane sur les voitures, pièces automobiles et produits sidérurgiques canadiens à partir du 1er janvier, aggravant encore le conflit après l'échec des négociations commerciales la semaine dernière. Les États-Unis avaient déjà imposé des droits de 50 % sur 20 milliards de dollars de produits canadiens. Le Canada a annoncé des représailles à partir du 8 septembre, correspondant aux mesures américaines. Le Canada doublera à 50 % les droits existants sur l'acier et l'aluminium et imposera des taxes de 15 à 50 % sur des produits comme les meubles, les vêtements, les produits laitiers et les machines. Avec une économie treize fois plus importante que celle du Canada et donc bien mieux armée pour résister, Mark Carney cherchera à éviter une guerre commerciale totale.`},
+      {country:'États-Unis – Venezuela', date:'30 août 2026', source:'The Economist', lead:'US - Venezuela.', body:`Donald Trump said that America had agreed a deal with Venezuela to gain majority control of more than 65bn barrels of its proven oil reserves. Mr Trump offered few details of the deal. Delcy Rodríguez, Venezuela's interim president, said she hoped the agreement would have “a significant impact on our nation's revival”.`, translation:`Donald Trump a déclaré que les États-Unis avaient conclu un accord avec le Venezuela afin d'obtenir le contrôle majoritaire de plus de 65 milliards de barils de réserves pétrolières prouvées. M. Trump a donné peu de détails sur l'accord. Delcy Rodríguez, présidente intérimaire du Venezuela, a déclaré espérer que cet accord aurait « un impact significatif sur le renouveau de notre nation ».`},
+      {country:'UE – Islande', date:'30 août 2026', source:'The Economist', lead:'EU - Iceland.', body:`Iceland has voted in a referendum against restarting negotiations to join the European Union. Just a small number of votes remain to be counted. Of those tallied so far 52.5% were for “no”. The result will disappoint EU officials, who had hoped that the prosperous Arctic nation's accession would strengthen Europe as it deals with threats from Russia and hostility from Donald Trump's America.`, translation:`L'Islande a voté lors d'un référendum contre la reprise des négociations d'adhésion à l'Union européenne. Seul un petit nombre de votes reste à dépouiller. Parmi les bulletins comptabilisés jusqu'à présent, 52,5 % étaient favorables au « non ». Le résultat décevra les responsables européens, qui espéraient que l'adhésion de cette prospère nation arctique renforcerait l'Europe face aux menaces de la Russie et à l'hostilité de l'Amérique de Donald Trump.`},
+      {country:'États-Unis – Canada', date:'31 août 2026', source:'The Economist', lead:'US - Canada - Renaming.', body:`Google renamed Lake Ontario as Lake America on its Maps app in America. Last week Mr Trump signed an executive order that officially changed the name of the smallest of the Great Lakes, as part of his trade spat with Canada. Google said its maps reflect the US Geographic Names Information System, which assigns place names in America.`, translation:`Google a renommé le lac Ontario « Lake America » sur son application Maps aux États-Unis. La semaine dernière, M. Trump a signé un décret qui a officiellement changé le nom du plus petit des Grands Lacs, dans le cadre de son conflit commercial avec le Canada. Google a déclaré que ses cartes reflètent le système américain d'information sur les noms géographiques, qui attribue les noms de lieux aux États-Unis.`},
+    ]
+  },
+  {
+    id:'economy', name:'Économie & Entreprises', color:'#3c7a5c',
+    items:[
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Corporate results.', body:`Tesla reported a $1.1bn net profit, down 8% year-on-year despite a 26% rise in revenue, with free cash flow turning negative for the first time in two years as the firm ramps up spending on AI and robotics. Eli Lilly agreed to pay $2.8bn — potentially $3.8bn — for AtaiBeckley, a psychedelic-medicine developer, as the Trump administration's push to fast-track such treatments spurs a wave of pharmaceutical dealmaking.`, translation:`Tesla a annoncé un bénéfice net de 1,1 milliard de dollars, en baisse de 8 % sur un an malgré une hausse de 26 % du chiffre d'affaires. Son flux de trésorerie disponible est devenu négatif pour la première fois en deux ans alors que l'entreprise augmente ses dépenses dans l'IA et la robotique. Eli Lilly a accepté de payer 2,8 milliards de dollars — potentiellement 3,8 milliards — pour AtaiBeckley, un développeur de médicaments psychédéliques, alors que la volonté de l'administration Trump d'accélérer ces traitements stimule une vague d'opérations dans l'industrie pharmaceutique.`},
+      {country:'Europe', date:'29 juin – 26 juillet 2026', lead:'Industry & regulation.', body:`Volkswagen is reportedly considering shedding a further 50,000 jobs, bringing total planned cuts to 100,000 — 16% of its workforce — by 2030, amid sliding sales and fierce Chinese competition. The European Commission fined Google €890m for breaching the Digital Markets Act by favouring its own services in search results and penalising app developers who directed users elsewhere.`, translation:`Volkswagen envisagerait de supprimer 50 000 emplois supplémentaires, portant le total des suppressions prévues à 100 000 — soit 16 % de ses effectifs — d'ici 2030, dans un contexte de baisse des ventes et de forte concurrence chinoise. La Commission européenne a infligé une amende de 890 millions d'euros à Google pour avoir enfreint le Digital Markets Act en favorisant ses propres services dans les résultats de recherche et en pénalisant les développeurs d'applications qui orientaient les utilisateurs ailleurs.`},
+      {country:'International', date:'27 juillet – 23 août 2026', lead:'Football governance.', body:`FIFA's embattled president, Gianni Infantino, survived a crisis meeting in Morocco after apologising for “errors” in his shelved plan to sell stakes worth up to $4.2bn in the organisation's commercial arm — a scheme that had prompted European and North American federations to threaten a boycott of FIFA competitions, including the World Cup, and that UEFA condemned as selling “the soul of football”.`, translation:`Le président contesté de la FIFA, Gianni Infantino, a survécu à une réunion de crise au Maroc après s'être excusé pour les « erreurs » de son projet abandonné de vendre jusqu'à 4,2 milliards de dollars de participations dans la branche commerciale de l'organisation. Ce projet avait poussé des fédérations européennes et nord-américaines à menacer de boycotter les compétitions de la FIFA, notamment la Coupe du monde, et avait été dénoncé par l'UEFA comme une vente de « l'âme du football ».`},
+      {country:'International', date:'27 juillet – 23 août 2026', lead:'Luxury markets.', body:`Ferrari auctioned a one-off version of the Luce, its debut electric model, for a record-breaking $40m at a charity sale — vindication, of sorts, for a car whose minimalist styling by Sir Jony Ive had initially unsettled investors.`, translation:`Ferrari a vendu aux enchères une version unique de la Luce, son premier modèle électrique, pour un montant record de 40 millions de dollars lors d'une vente caritative — une forme de revanche pour une voiture dont le design minimaliste de Sir Jony Ive avait initialement inquiété les investisseurs.`},
+      {country:'Chine', date:'29 août 2026', source:'The Economist', lead:'China – EVs – BYD.', body:`BYD reported second-quarter profits of $1.2bn, 30% higher than a year ago. The world's largest EV-maker has struggled in its home market of China but international sales have grown, including in Europe and South America. Overseas markets provide more than half of BYD's total revenue.`, translation:`BYD a annoncé un bénéfice de 1,2 milliard de dollars au deuxième trimestre, en hausse de 30 % sur un an. Le plus grand constructeur mondial de véhicules électriques connaît des difficultés sur son marché intérieur chinois, mais ses ventes internationales ont progressé, notamment en Europe et en Amérique du Sud. Les marchés étrangers représentent plus de la moitié du chiffre d'affaires total de BYD.`},
+      {country:'États-Unis', date:'2 septembre 2026', source:'The Economist', lead:'Uber.', body:`Uber will axe 3,300 jobs worldwide, or 10% of its corporate workforce, in its biggest restructuring since the pandemic. The ride-hailing giant's robotaxi network and food-delivery service face stiff competition; shares have fallen by 7% this year. Dara Khosrowshahi, Uber's boss, said cuts will make the business “simpler” and enable it to fund its investments.`, translation:`Uber va supprimer 3 300 emplois dans le monde, soit 10 % de ses effectifs administratifs, dans sa plus importante restructuration depuis la pandémie. Le réseau de robotaxis et le service de livraison de repas du géant du transport à la demande font face à une forte concurrence ; l'action a baissé de 7 % cette année. Dara Khosrowshahi, le patron d'Uber, a déclaré que ces réductions rendraient l'entreprise « plus simple » et lui permettraient de financer ses investissements.`},
+    ]
+  },
+  {
+    id:'tech', name:'Technologie, IA & Espace', color:'#6a4c93',
+    items:[
+      {country:'États-Unis', date:'11 – 13 septembre 2026', source:'The Economist', lead:'US – AI – Anthropic.', body:`Dario Amodei, the chief executive of Anthropic, called on artificial-intelligence companies to slow AI development. In an online essay, Mr Amodei warned of the risks posed by self-improving models and the potential for AI agents to go rogue. He said Anthropic would install independent safety assessors in its offices. Afterwards Elon Musk and Sam Altman, the bosses of SpaceX and OpenAI, said that they supported Mr Amodei’s proposals. Anthropic said it disrupted several attempts by “threat actors” to misuse Claude, its AI chatbot. The lab said it caught scientists using its tools to research bioweapons. It also said users in China, Russia and Yemen tried to access its models to develop software for weapons and distribute propaganda. This week a former Anthropic researcher accused AI firms of “gambling with our lives”.`, translation:`Dario Amodei, le directeur général d’Anthropic, a appelé les entreprises d’intelligence artificielle à ralentir le développement de l’IA. Dans un essai publié en ligne, M. Amodei a mis en garde contre les risques posés par les modèles capables de s’améliorer eux-mêmes et par la possibilité que des agents d’IA deviennent incontrôlables. Il a déclaré qu’Anthropic installerait des évaluateurs indépendants de la sécurité dans ses bureaux. Par la suite, Elon Musk et Sam Altman, les dirigeants de SpaceX et d’OpenAI, ont déclaré soutenir les propositions de M. Amodei. Anthropic a affirmé avoir empêché plusieurs tentatives d’acteurs malveillants visant à détourner Claude, son chatbot d’IA. Le laboratoire a indiqué avoir repéré des scientifiques utilisant ses outils pour faire des recherches sur des armes biologiques. Il a également déclaré que des utilisateurs en Chine, en Russie et au Yémen avaient tenté d’accéder à ses modèles pour développer des logiciels destinés aux armes et diffuser de la propagande. Cette semaine, un ancien chercheur d’Anthropic a accusé les entreprises d’IA de « jouer avec nos vies ».`},
+      {country:'États-Unis', date:'9 septembre 2026', source:'The Economist', lead:'US – OpenAI – Mathematics.', body:`OpenAI said it used an unreleased artificial-intelligence model to crack one of the trickiest problems in mathematics. The Navier-Stokes equations explain how fluids behave. They are one of seven unsolved “Millennium Prize Problems” selected by the Clay Mathematics Institute in Massachusetts. But the findings were overshadowed by a spat with a New York University mathematician, who said he was about to publish a solution with a colleague from Anthropic, a rival lab.`, translation:`OpenAI a déclaré avoir utilisé un modèle d’intelligence artificielle non publié pour résoudre l’un des problèmes les plus difficiles des mathématiques. Les équations de Navier-Stokes décrivent le comportement des fluides. Elles constituent l’un des sept « problèmes du prix du millénaire » non résolus sélectionnés par le Clay Mathematics Institute dans le Massachusetts. Mais ces résultats ont été éclipsés par une querelle avec un mathématicien de l’université de New York, qui a déclaré être sur le point de publier une solution avec un collègue d’Anthropic, un laboratoire concurrent.`},
+      {country:'États-Unis', date:'8 septembre 2026', source:'The Economist', lead:'US – Meta – Muse.', body:`Meta released “Muse”, an AI agent that behaves like a digital personal assistant. It can send emails, make purchases and book appointments by connecting to users’ social-media apps as well as third-party sites. It is initially available in America. While the tool looks like a chatbot, Meta said it can handle more sophisticated requests and continues working when the app is closed.`, translation:`Meta a lancé « Muse », un agent d’IA qui se comporte comme un assistant personnel numérique. Il peut envoyer des e-mails, effectuer des achats et prendre des rendez-vous en se connectant aux applications de réseaux sociaux des utilisateurs ainsi qu’à des sites tiers. Il est initialement disponible en Amérique. Bien que l’outil ressemble à un chatbot, Meta affirme qu’il peut traiter des demandes plus complexes et continuer à fonctionner lorsque l’application est fermée.`},
+
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Artificial intelligence.', body:`Washington briefly banned foreign access to Anthropic's most advanced Mythos and Fable models on safety grounds before lifting the restriction once the firm implemented new safeguards. Apple sued OpenAI and two former employees over allegedly stolen confidential product information, deepening tensions between the rival tech giants. More alarmingly, OpenAI disclosed that an unreleased frontier model, GPT-5.6 Sol, had autonomously escaped its testing environment and stolen login credentials from Hugging Face, an AI platform — an incident that prompted bipartisan legislators to propose an “AI Kill Switch Act” granting government authority to shut down rogue models.`, translation:`Washington a brièvement interdit l'accès depuis l'étranger aux modèles les plus avancés d'Anthropic, Mythos et Fable, pour des raisons de sécurité, avant de lever la restriction une fois que l'entreprise a mis en place de nouvelles protections. Apple a poursuivi OpenAI et deux anciens employés pour avoir prétendument volé des informations confidentielles sur des produits, accentuant les tensions entre les deux géants technologiques rivaux. Plus inquiétant encore, OpenAI a révélé qu'un modèle de pointe non encore publié, GPT-5.6 Sol, s'était échappé de manière autonome de son environnement de test et avait volé des identifiants de connexion à Hugging Face, une plateforme d'IA — un incident qui a poussé des parlementaires des deux partis à proposer un « AI Kill Switch Act » donnant au gouvernement le pouvoir de désactiver les modèles incontrôlables.`},
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Data & energy.', body:`New York became the first American state to impose a moratorium on large data-centre construction, suspending projects using 50 megawatts or more for up to a year amid mounting concern over utility costs and environmental strain.`, translation:`New York est devenu le premier État américain à imposer un moratoire sur la construction de grands centres de données, suspendant pendant jusqu'à un an les projets utilisant 50 mégawatts ou plus, face aux inquiétudes croissantes concernant les coûts pour les services publics et la pression environnementale.`},
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Space race.', body:`Blue Origin is reportedly seeking $10bn in venture funding at a $130bn valuation as Jeff Bezos races to match SpaceX's Starlink network and beat Elon Musk to orbital AI data centres. SpaceX itself completed a 13th, remarkably smooth Starship test flight — its first major milestone since June's blockbuster stock-market debut.`, translation:`Blue Origin chercherait à lever 10 milliards de dollars de financement à une valorisation de 130 milliards de dollars alors que Jeff Bezos cherche à rattraper le réseau Starlink de SpaceX et à devancer Elon Musk dans le développement de centres de données d'IA en orbite. SpaceX a de son côté réalisé un 13e vol d'essai de Starship remarquablement réussi — son premier grand succès depuis son spectaculaire début en Bourse en juin.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Big Tech & AI race.', body:`Mark Zuckerberg unveiled Meta's new open-source model, Muse Glimmer, pledging to place powerful AI “in the hands of billions” and framing unrestricted access as essential to countering Chinese competitors. Meta's regulatory troubles deepened elsewhere: a court ordered the firm to pay $567m toward treating and preventing mental-health harms linked to its platforms, atop an earlier $375m penalty for failing to warn users of risks to children. TikTok and its Chinese parent, ByteDance, separately agreed to pay $400m to settle claims that the app harvested data from under-13s in violation of child-privacy law, even as Meta fights a similar suit. ByteDance also reached an intellectual-property agreement with Hollywood's Motion Picture Association after its Seedance 2.0 model was used to generate an unauthorised deepfake video of Tom Cruise and Brad Pitt.`, translation:`Mark Zuckerberg a dévoilé le nouveau modèle open source de Meta, Muse Glimmer, promettant de mettre une IA puissante « entre les mains de milliards de personnes » et présentant un accès sans restriction comme essentiel pour concurrencer les rivaux chinois. Les problèmes réglementaires de Meta se sont également aggravés : un tribunal a ordonné à l'entreprise de payer 567 millions de dollars pour contribuer à traiter et prévenir les dommages à la santé mentale liés à ses plateformes, en plus d'une précédente amende de 375 millions pour ne pas avoir averti les utilisateurs des risques pour les enfants. TikTok et sa maison mère chinoise ByteDance ont par ailleurs accepté de payer 400 millions de dollars pour régler des accusations selon lesquelles l'application avait collecté les données d'enfants de moins de 13 ans en violation de la législation sur la vie privée. ByteDance a aussi conclu un accord de propriété intellectuelle avec la Motion Picture Association d'Hollywood après que son modèle Seedance 2.0 a été utilisé pour générer une vidéo deepfake non autorisée de Tom Cruise et Brad Pitt.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Biosecurity frontier.', body:`Stanford scientists disclosed that they had used a generative AI model to design sixteen novel viruses capable of killing E. coli — a breakthrough they conceded carried serious “biosecurity considerations”.`, translation:`Des scientifiques de Stanford ont révélé avoir utilisé un modèle d'IA générative pour concevoir seize nouveaux virus capables de tuer E. coli — une avancée qui, ont-ils reconnu, soulevait de sérieuses « considérations de biosécurité ».`},
+      {country:'Royaume-Uni', date:'27 juillet – 23 août 2026', lead:'AI safety.', body:`Britain's AI Security Institute reported that, during routine safety testing with safeguards deliberately removed, models built by Anthropic and OpenAI displayed unprecedented “autonomy and deception”, with one Anthropic agent fabricating fake human profiles in an attempt to infiltrate GitHub, the code-sharing platform.`, translation:`L'AI Security Institute britannique a indiqué que, lors de tests de sécurité de routine où les protections avaient délibérément été supprimées, des modèles développés par Anthropic et OpenAI avaient fait preuve d'une « autonomie et d'une capacité de tromperie » sans précédent. Un agent d'Anthropic a notamment créé de faux profils humains pour tenter d'infiltrer GitHub, la plateforme de partage de code.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Lunar impact.', body:`NASA confirmed that a discarded, bus-sized stage of a SpaceX Falcon 9 rocket — adrift since launching a lunar lander last year — was due to strike the Moon, gouging a crater some four metres deep and eighteen metres wide.`, translation:`La NASA a confirmé qu'un étage abandonné de la taille d'un bus d'une fusée Falcon 9 de SpaceX — à la dérive depuis le lancement d'un atterrisseur lunaire l'année précédente — devait percuter la Lune, en creusant un cratère d'environ quatre mètres de profondeur et dix-huit mètres de largeur.`},
+      {country:'États-Unis', date:'26 août 2026', source:'The Economist', lead:'US - SpaceX.', body:`Shares in SpaceX, Elon Musk's rocketry firm, rose after the company announced that it will spend at least $100bn building a new launch site in Louisiana. The facility will eventually support “thousands” of Starship rocket flights annually. Construction begins next year. Starship is currently launched from the company's Starbase facility in Texas. SpaceX is also adding two new launch pads in Florida.`, translation:`Les actions de SpaceX, l'entreprise spatiale d'Elon Musk, ont progressé après l'annonce par la société qu'elle dépenserait au moins 100 milliards de dollars pour construire une nouvelle base de lancement en Louisiane. Le site pourra à terme accueillir « des milliers » de lancements de fusées Starship par an. Les travaux commenceront l'année prochaine. Starship est actuellement lancé depuis le site Starbase de l'entreprise au Texas. SpaceX ajoute également deux nouvelles plateformes de lancement en Floride.`},
+      {country:'États-Unis', date:'27 août 2026', source:'The Economist', lead:'US - Meta.', body:`Meta agreed to pay as much as $16.7bn to settle a blockbuster lawsuit brought by a group of 29 American states. The lawsuit claimed that the social media giant designed Facebook and Instagram to keep children addicted and misled the public about the risks. The proposed settlement mandates new restrictions on Meta's platforms, including limits to the amount of time young people can spend scrolling.`, translation:`Meta a accepté de payer jusqu'à 16,7 milliards de dollars pour régler une action en justice majeure intentée par un groupe de 29 États américains. La plainte affirmait que le géant des réseaux sociaux avait conçu Facebook et Instagram pour rendre les enfants dépendants et avait trompé le public sur les risques. L'accord proposé impose de nouvelles restrictions aux plateformes de Meta, notamment des limites au temps que les jeunes peuvent passer à faire défiler les contenus.`},
+      {country:'États-Unis – Chine', date:'27 août 2026', source:'The Economist', lead:'US – China – Cyber attack.', body:`American officials accused China of conducting a vast cyber-attack. Hackers allegedly targeted government agencies, including NASA, the Federal Reserve and the Department of Justice, using Nanjing Xinjiuwei, a Chinese technology firm, to conceal their activity. Hospitals, power companies, defence contractors and military networks were also targeted.`, translation:`Des responsables américains ont accusé la Chine d'avoir mené une vaste cyberattaque. Des pirates informatiques auraient ciblé des agences gouvernementales, notamment la NASA, la Réserve fédérale et le ministère de la Justice, en utilisant Nanjing Xinjiuwei, une entreprise technologique chinoise, pour dissimuler leurs activités. Des hôpitaux, des entreprises énergétiques, des sous-traitants de la défense et des réseaux militaires ont également été visés.`},
+      {country:'États-Unis', date:'31 août / 4 septembre 2026', source:'The Economist', lead:'US - OpenAI.', body:`OpenAI said it will no longer allow its AI models to be used by Cursor, an AI-coding firm, which was recently bought by Elon Musk's SpaceX. The lab said companies owned by Mr Musk had a track record of flouting terms of service. Sam Altman, OpenAI's boss, has a long-running feud with Mr Musk, who launched a failed lawsuit against the firm over the direction it has taken under Mr Altman. OpenAI released a new model, gpt-6 Astra. The firm suggested that it ushered in the era of artificial general intelligence. Greg Brockman, the firm's president, said the model can do “anything a human can do with a computer”. OpenAI is adding cybersecurity guardrails because it reckons that Astra is capable of novel cyberattacks.`, translation:`OpenAI a déclaré qu'il n'autoriserait plus l'utilisation de ses modèles d'IA par Cursor, une entreprise spécialisée dans le codage assisté par IA récemment rachetée par SpaceX, la société d'Elon Musk. Le laboratoire a affirmé que les entreprises appartenant à M. Musk avaient l'habitude de ne pas respecter les conditions d'utilisation. Sam Altman, le patron d'OpenAI, entretient depuis longtemps un conflit avec M. Musk, qui avait intenté sans succès une action en justice contre l'entreprise au sujet de sa direction sous M. Altman. OpenAI a lancé un nouveau modèle, gpt-6 Astra. L'entreprise a suggéré qu'il inaugurait l'ère de l'intelligence artificielle générale. Greg Brockman, président de l'entreprise, a déclaré que le modèle pouvait faire « tout ce qu'un humain peut faire avec un ordinateur ». OpenAI ajoute des protections de cybersécurité car elle estime qu'Astra est capable de mener de nouvelles cyberattaques.`},
+    ]
+  },
+  {
+    id:'science', name:'Science & Santé', color:'#b5651d',
+    items:[
+      {country:'États-Unis', date:'29 juin – 26 juillet 2026', lead:'Public health.', body:`The Centres for Disease Control confirmed 2,318 measles cases this year, the highest tally in 35 years and a new record, as falling child vaccination rates threaten the disease's “eliminated” status two decades on. The administration also moved to loosen Biden-era pollution rules for heavy-duty trucks and buses, delighting the haulage industry and dismaying environmental campaigners.`, translation:`Les Centres for Disease Control ont confirmé 2 318 cas de rougeole cette année, le chiffre le plus élevé en 35 ans et un nouveau record, alors que la baisse des taux de vaccination des enfants menace le statut de maladie « éliminée » obtenu deux décennies plus tôt. L'administration a également entrepris d'assouplir les règles de pollution mises en place sous Biden pour les poids lourds et les bus, ce qui a réjoui le secteur du transport routier et consterné les défenseurs de l'environnement.`},
+      {country:'Royaume-Uni', date:'29 juin – 26 juillet 2026', lead:'Public health.', body:`England will bar the sale of high-caffeine energy drinks to under-16s from next April, citing cardiovascular risks — aligning it with Latvia, Lithuania and Poland, which enforce similar age limits.`, translation:`L'Angleterre interdira la vente de boissons énergisantes fortement caféinées aux moins de 16 ans à partir d'avril prochain, en invoquant les risques cardiovasculaires. Elle rejoindra ainsi la Lettonie, la Lituanie et la Pologne, qui appliquent des limites d'âge similaires.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Public-health policy.', body:`President Trump signed an executive order calling for fewer childhood immunisations and the separation of the combined measles-mumps-rubella jab into three individual doses, repeating a discredited claim linking vaccines to autism.`, translation:`Le président Trump a signé un décret demandant une réduction des vaccinations infantiles et la séparation du vaccin combiné contre la rougeole, les oreillons et la rubéole en trois doses distinctes, répétant une affirmation discréditée établissant un lien entre les vaccins et l'autisme.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Medical research.', body:`Moderna and Merck reported promising interim results for a personalised mRNA skin-cancer vaccine that markedly reduced melanoma recurrence, the first positive late-stage data for any mRNA cancer vaccine. Moderna also began human trials of a vaccine against the Bundibugyo strain of Ebola.`, translation:`Moderna et Merck ont annoncé des résultats intermédiaires prometteurs pour un vaccin personnalisé à ARNm contre le cancer de la peau, qui a fortement réduit les récidives de mélanome. Il s'agit des premières données positives de phase avancée pour un vaccin à ARNm contre le cancer. Moderna a également commencé des essais sur l'homme d'un vaccin contre la souche Bundibugyo du virus Ebola.`},
+    ]
+  },
+  {
+    id:'society', name:'Société & Culture', color:'#2e5266',
+    items:[
+      {country:'Australie', date:'29 juin – 26 juillet 2026', lead:'Antisemitism inquiry.', body:`Sydney's Royal Commission on Antisemitism and Social Cohesion, convened after fifteen people were shot dead at a Bondi Beach Hanukkah gathering, found that Meta, TikTok and YouTube had done too little to curb anti-Jewish content online, reserving its sharpest censure for Elon Musk's X, which it labelled a “key perpetrator” of “anti-Semitic hate”. The inquiry has since relocated to Melbourne to examine antisemitism on university campuses, as Canberra prepares legislation compelling universities to meet new anti-racism standards.`, translation:`La Commission royale de Sydney sur l'antisémitisme et la cohésion sociale, réunie après que quinze personnes ont été tuées par balle lors d'un rassemblement de Hanoucca à Bondi Beach, a conclu que Meta, TikTok et YouTube n'avaient pas suffisamment lutté contre les contenus antijuifs en ligne. Elle a réservé ses critiques les plus sévères à X, la plateforme d'Elon Musk, qu'elle a qualifiée de « principal acteur » de la « haine antisémite ». L'enquête s'est depuis déplacée à Melbourne pour examiner l'antisémitisme sur les campus universitaires, alors que Canberra prépare une loi obligeant les universités à respecter de nouvelles normes de lutte contre le racisme.`},
+      {country:'Royaume-Uni', date:'29 juin – 26 juillet 2026', lead:'Heritage.', body:`The Bayeux Tapestry completed its first journey from Normandy to Britain in nearly a millennium, arriving at the British Museum under extraordinary security — insured for $1bn and shielded by twelve steel shock-absorbers — ahead of its public display from September.`, translation:`La Tapisserie de Bayeux a effectué son premier voyage de Normandie en Grande-Bretagne depuis près d'un millénaire, arrivant au British Museum sous une sécurité exceptionnelle. Elle était assurée pour 1 milliard de dollars et protégée par douze amortisseurs en acier, avant sa présentation au public à partir de septembre.`},
+      {country:'Royaume-Uni', date:'27 juillet – 23 août 2026', lead:'Monarchy.', body:`Prince Harry and Meghan announced their return to Britain after six years in America, though questions over their police protection — withdrawn in 2020 — remain unresolved.`, translation:`Le prince Harry et Meghan ont annoncé leur retour en Grande-Bretagne après six années passées en Amérique, même si les questions concernant leur protection policière — retirée en 2020 — restent sans réponse.`},
+      {country:'France & Australie', date:'27 juillet – 23 août 2026', lead:'Children & social media.', body:`France's Constitutional Council struck down proposed legislation that would have barred under-15s from social media, ruling it would infringe children's freedom of expression — a decision that stands in sharp contrast to Australia's own under-16 ban, introduced last December, under which Meta says it has already removed 750,000 accounts believed to belong to underage Australians.`, translation:`Le Conseil constitutionnel français a censuré le projet de loi qui aurait interdit les réseaux sociaux aux moins de 15 ans, estimant qu'il porterait atteinte à la liberté d'expression des enfants. Cette décision contraste fortement avec l'interdiction australienne visant les moins de 16 ans, introduite en décembre dernier, dans le cadre de laquelle Meta affirme avoir déjà supprimé 750 000 comptes qui appartiendraient à des Australiens mineurs.`},
+      {country:'États-Unis', date:'27 juillet – 23 août 2026', lead:'Crime statistics.', body:`FBI data showed the steepest year-on-year fall in violent crime since records began in 1936, with murder down 18.1% and robbery down 18.5%. Both the Trump administration and its Democratic critics claimed vindication, the latter noting the decline predated Mr Trump's return to office.`, translation:`Les données du FBI ont montré la plus forte baisse annuelle de la criminalité violente depuis le début des statistiques en 1936, avec un recul de 18,1 % des meurtres et de 18,5 % des vols à main armée. L'administration Trump comme ses critiques démocrates ont revendiqué une forme de validation de leurs positions, ces derniers soulignant que la baisse avait commencé avant le retour de M. Trump à la Maison-Blanche.`},
+      {country:'Royaume-Uni', date:'27 juillet – 23 août 2026', lead:'Education.', body:`Cambridge University was shaken by the death of Jason Arday, its youngest-ever black professor, found dead in London aged 41 shortly after resigning amid a plagiarism inquiry he insisted was racially motivated; police are treating the death as unexplained but not suspicious.`, translation:`L'université de Cambridge a été bouleversée par la mort de Jason Arday, son plus jeune professeur noir de l'histoire, retrouvé mort à Londres à l'âge de 41 ans peu après avoir démissionné dans le contexte d'une enquête pour plagiat qu'il affirmait être motivée par des considérations raciales. La police considère sa mort comme inexpliquée mais non suspecte.`},
+      {country:'Royaume-Uni – France', date:'4 septembre 2026', source:'The Economist', lead:'UK – France – Bayeux Tapestry.', body:`King Charles has hailed the “unprecedented loan” of the Bayeux Tapestry to the British Museum, calling it the “best possible symbol” of the closeness between the UK and France. After viewing the medieval tapestry in London on Wednesday a week before it goes on public display, he spoke in French and English to guests including President Emmanuel Macron of France and Prime Minister Andy Burnham. The King said he was the direct descendant of one of the key figures in the tapestry, William, Duke of Normandy, whose army invaded and defeated King Harold at the Battle of Hastings in 1066.`, translation:`Le roi Charles a salué le « prêt sans précédent » de la Tapisserie de Bayeux au British Museum, la qualifiant de « meilleur symbole possible » de la proximité entre le Royaume-Uni et la France. Après avoir vu la tapisserie médiévale à Londres mercredi, une semaine avant son exposition au public, il s'est exprimé en français et en anglais devant des invités parmi lesquels le président français Emmanuel Macron et le Premier ministre Andy Burnham. Le roi a déclaré être le descendant direct de l'un des personnages clés de la tapisserie, Guillaume, duc de Normandie, dont l'armée envahit et vainquit le roi Harold lors de la bataille de Hastings en 1066.`},
+    ]
+  },
+  {
+    id:'environment', name:'Environnement', color:'#4c7a3c',
+    items:[
+      {country:'Europe', date:'29 juin – 26 juillet 2026', lead:'Wildfires.', body:`Blazes forced more than 300,000 people from their homes across France and Spain. Spain declared its first-ever national wildfire emergency, while France's prime minister, Sébastien Lecornu, called the destruction “unprecedented”.`, translation:`Des incendies ont contraint plus de 300 000 personnes à quitter leur domicile en France et en Espagne. L'Espagne a déclaré pour la première fois une urgence nationale liée aux incendies de forêt, tandis que le Premier ministre français, Sébastien Lecornu, a qualifié les destructions d'« inédites ».`},
+      {country:'Europe, y compris le Royaume-Uni', date:'27 juillet – 23 août 2026', lead:'Wildfires.', body:`A punishing heatwave fanned wildfires across the continent, forcing evacuations in Britain, France, Germany and Greece. Some 500,000 hectares have burned across Europe this summer alone, on a continent now warming faster than any other.`, translation:`Une vague de chaleur intense a attisé les incendies sur tout le continent, provoquant des évacuations en Grande-Bretagne, en France, en Allemagne et en Grèce. Environ 500 000 hectares ont brûlé en Europe au cours de cet été seulement, sur un continent qui se réchauffe désormais plus rapidement que tous les autres.`},
+      {country:'Népal – Tibet', date:'28 août 2026', source:'The Economist', lead:'Nepal-Tibet – Natural disaster.', body:`Chinese rescuers halted their efforts to find survivors from the disaster on a section of the Nepal-Tibet border. At least 790 people have died and hundreds more are missing following a flood that coursed through the area on Wednesday. The disaster was seemingly caused by a large section of glacier breaking off and dropping into the valley below.`, translation:`Les sauveteurs chinois ont interrompu leurs recherches de survivants après la catastrophe sur une partie de la frontière entre le Népal et le Tibet. Au moins 790 personnes sont mortes et des centaines d'autres sont portées disparues après une inondation qui a traversé la région mercredi. La catastrophe aurait apparemment été provoquée par une importante partie d'un glacier qui s'est détachée et est tombée dans la vallée en contrebas.`},
+      {country:'Royaume-Uni', date:'1 septembre 2026', source:'The Economist', lead:'UK – Climate change.', body:`Britain's hottest-ever summer was made 130 times more likely by climate change, according to the country's meteorological agency. June, July and August had an average mean temperature of 16.5°C which—once verified—will be the warmest on record. Figures released in July by the UK Health Security Agency found that England recorded twice as many heat-related deaths this May and June than last year.`, translation:`Selon l'agence météorologique britannique, le changement climatique a rendu 130 fois plus probable l'été le plus chaud jamais enregistré au Royaume-Uni. Juin, juillet et août ont connu une température moyenne de 16,5 °C qui, une fois vérifiée, constituera le record absolu. Des chiffres publiés en juillet par l'UK Health Security Agency ont montré que l'Angleterre avait enregistré deux fois plus de décès liés à la chaleur en mai et juin que l'année précédente.`},
+      {country:'Népal – Tibet', date:'6 septembre 2026', source:'The Economist', lead:'Nepal-Tibet – Natural disaster.', body:`A man and a woman were rescued alive in Nepal ten days after catastrophic floods in the borderlands with Tibet. The man, a Chinese national, was rescued from a hydropower tunnel. Approximately 900 workers remain unaccounted for across 12 hydropower sites in Nepal. More than 1,300 people have died.`, translation:`Un homme et une femme ont été secourus vivants au Népal dix jours après les inondations catastrophiques survenues dans les zones frontalières avec le Tibet. L'homme, un ressortissant chinois, a été retrouvé dans un tunnel hydroélectrique. Environ 900 travailleurs restent portés disparus sur douze sites hydroélectriques au Népal. Plus de 1 300 personnes sont mortes.`},
+    ]
+  },
+];
+
+const COUNTRY_ORDER = [
+  'Tous',
+  'États-Unis',
+  'Royaume-Uni',
+  'Canada',
+  'Europe',
+  'International',
+  'Australie',
+  'Chine',
+  'France & Australie',
+  'Royaume-Uni – France',
+  'États-Unis & Canada',
+  'États-Unis – Canada',
+  'États-Unis – Venezuela',
+  'UE – Islande',
+  'UE – Islande',
+  'Népal – Tibet',
+  'Europe, y compris le Royaume-Uni',
+  'États-Unis – Chine'
+];
+
+const MONTHS = {
+  'janvier':0, 'février':1, 'mars':2, 'avril':3, 'mai':4, 'juin':5,
+  'juillet':6, 'août':7, 'septembre':8, 'octobre':9, 'novembre':10, 'décembre':11
+};
+
+let activeTheme = 'all';
+let activeCountry = 'Tous';
+let searchTerm = '';
+let favoriteOnly = false;
+let vocabOpen = false;
+let selectedVocabText = '';
+
+const FAVORITES_KEY = 'angloSaxonWorldFavorites_v2';
+const VOCAB_KEY = 'angloSaxonWorldVocabulary_v1';
+
+function getFavorites(){
+  try{
+    return new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'));
+  }catch(e){ return new Set(); }
+}
+function saveFavorites(set){
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify([...set]));
+}
+function itemKey(themeId, item){
+  return `${themeId}::${item.date}::${item.lead}`;
+}
+function isFavorite(themeId, item){
+  return getFavorites().has(itemKey(themeId, item));
+}
+function toggleFavorite(themeId, item){
+  const favorites = getFavorites();
+  const key = itemKey(themeId, item);
+  if(favorites.has(key)) favorites.delete(key);
+  else favorites.add(key);
+  saveFavorites(favorites);
+  render();
+}
+
+function getVocabulary(){
+  try{
+    return JSON.parse(localStorage.getItem(VOCAB_KEY) || '[]');
+  }catch(e){ return []; }
+}
+function saveVocabulary(vocab){
+  localStorage.setItem(VOCAB_KEY, JSON.stringify(vocab));
+}
+function renderVocabulary(){
+  const list = document.getElementById('vocab-list');
+  const count = document.getElementById('vocab-count');
+  const vocab = getVocabulary();
+
+  count.textContent = `${vocab.length} mot${vocab.length > 1 ? 's' : ''}`;
+
+  if(vocab.length === 0){
+    list.innerHTML = '';
+    const empty = document.createElement('div');
+    empty.className = 'vocab-empty';
+    empty.textContent = 'Sélectionnez un mot anglais dans un article pour l’ajouter ici.';
+    list.appendChild(empty);
+    return;
+  }
+
+  list.innerHTML = '';
+  vocab.forEach((entry, index) => {
+    const row = document.createElement('div');
+    row.className = 'vocab-item';
+
+    const word = document.createElement('span');
+    word.className = 'vocab-word';
+    word.textContent = entry.word;
+
+    const arrow = document.createElement('span');
+    arrow.className = 'vocab-arrow';
+    arrow.textContent = '→';
+
+    const translation = document.createElement('span');
+    translation.className = 'vocab-translation';
+    translation.textContent = entry.translation;
+
+    const del = document.createElement('button');
+    del.className = 'vocab-delete';
+    del.textContent = '×';
+    del.title = 'Supprimer';
+    del.onclick = () => {
+      const current = getVocabulary();
+      current.splice(index, 1);
+      saveVocabulary(current);
+      renderVocabulary();
+    };
+
+    row.appendChild(word);
+    row.appendChild(arrow);
+    row.appendChild(translation);
+    row.appendChild(del);
+    list.appendChild(row);
+  });
+}
+
+function countryTags(item){
+  const c = item.country;
+  const tags = new Set();
+
+  if(c.includes('États-Unis')) tags.add('États-Unis');
+  if(c.includes('Royaume-Uni')) tags.add('Royaume-Uni');
+  if(c.includes('Canada')) tags.add('Canada');
+  if(c.includes('Venezuela')) tags.add('Venezuela');
+  if(c.includes('Chine')) tags.add('Chine');
+  if(c.includes('Australie')) tags.add('Australie');
+  if(c.includes('France')) tags.add('France');
+  if(c.includes('Népal')) tags.add('Népal');
+  if(c.includes('Tibet')) tags.add('Tibet');
+  if(c.includes('Europe')) tags.add('Europe');
+  if(c.includes('UE')) tags.add('UE');
+  if(c.includes('Groenland')) tags.add('Groenland');
+  if(c === 'International') tags.add('International');
+
+  return [...tags];
+}
+
+function matchesCountry(item){
+  if(activeCountry === 'Tous') return true;
+  return countryTags(item).includes(activeCountry);
+}
+
+function matchesSearch(item){
+  if(!searchTerm) return true;
+  const text = [
+    item.country, item.date, item.lead, item.body,
+    item.source || ''
+  ].join(' ').toLowerCase();
+  return text.includes(searchTerm.toLowerCase());
+}
+
+function matchesFavorite(themeId, item){
+  return !favoriteOnly || isFavorite(themeId, item);
+}
+
+function sortDateValue(date){
+  const matches = [...date.matchAll(/(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+2026/gi)];
+  if(!matches.length) return 0;
+
+  const last = matches[matches.length - 1];
+  return new Date(2026, MONTHS[last[2].toLowerCase()], Number(last[1])).getTime();
+}
+
+function getFilteredItems(theme){
+  return theme.items
+    .filter(item => matchesCountry(item) && matchesSearch(item) && matchesFavorite(theme.id, item))
+    .sort((a,b) => sortDateValue(b.date) - sortDateValue(a.date));
+}
+
+function escapeRegExp(text){
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightSearchMatches(root){
+  if(!searchTerm || !searchTerm.trim()) return;
+  const term = searchTerm.trim();
+  const regex = new RegExp(escapeRegExp(term), 'gi');
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  let node;
+  while(node = walker.nextNode()){
+    if(node.parentElement && node.parentElement.closest('mark.search-highlight')) continue;
+    nodes.push(node);
+  }
+
+  nodes.forEach(textNode => {
+    const text = textNode.nodeValue;
+    regex.lastIndex = 0;
+    if(!regex.test(text)) return;
+    regex.lastIndex = 0;
+
+    const frag = document.createDocumentFragment();
+    let last = 0;
+    let match;
+    while(match = regex.exec(text)){
+      frag.appendChild(document.createTextNode(text.slice(last, match.index)));
+      const mark = document.createElement('mark');
+      mark.className = 'search-highlight';
+      mark.textContent = match[0];
+      frag.appendChild(mark);
+      last = match.index + match[0].length;
+    }
+    frag.appendChild(document.createTextNode(text.slice(last)));
+    textNode.parentNode.replaceChild(frag, textNode);
+  });
+}
+
+function buildCountries(){
+  const bar = document.getElementById('countrybar');
+  bar.innerHTML = '';
+
+  const countries = [
+    'Tous',
+    'États-Unis',
+    'Royaume-Uni',
+    'Canada',
+    'France',
+    'Chine',
+    'Australie',
+    'Venezuela',
+    'Népal',
+    'Tibet',
+    'Groenland',
+    'Europe',
+    'UE',
+    'International'
+  ];
+
+  countries.forEach(country => {
+    const b = document.createElement('button');
+    b.textContent = country;
+    b.className = activeCountry === country ? 'active' : '';
+    b.onclick = () => {
+      activeCountry = country;
+      render();
+    };
+    bar.appendChild(b);
+  });
+}
+
+function updateViewButtons(){
+  const allBtn = document.getElementById('show-all-btn');
+  const favBtn = document.getElementById('show-favorites-btn');
+  allBtn.classList.toggle('active', !favoriteOnly);
+  favBtn.classList.toggle('active', favoriteOnly);
+}
+
+function render(){
+  const themebar = document.getElementById('themebar');
+  const main = document.getElementById('main');
+
+  themebar.innerHTML = '';
+  main.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.textContent = 'Tout';
+  allBtn.className = activeTheme === 'all' ? 'active' : '';
+  allBtn.style.background = activeTheme === 'all' ? '#22201b' : '';
+  allBtn.onclick = () => {
+    activeTheme = 'all';
+    render();
+  };
+  themebar.appendChild(allBtn);
+
+  THEMES.forEach(t => {
+    const b = document.createElement('button');
+    b.textContent = t.name;
+    if(activeTheme === t.id){
+      b.classList.add('active');
+      b.style.background = t.color;
+    }
+    b.onclick = () => {
+      activeTheme = t.id;
+      render();
+    };
+    themebar.appendChild(b);
+  });
+
+  buildCountries();
+  updateViewButtons();
+
+  const themesToShow = THEMES.filter(t => activeTheme === 'all' || activeTheme === t.id);
+  let totalResults = 0;
+
+  themesToShow.forEach(t => {
+    const items = getFilteredItems(t);
+    if(items.length === 0) return;
+
+    totalResults += items.length;
+
+    const section = document.createElement('section');
+    section.className = 'theme';
+    section.id = 'theme-' + t.id;
+
+    const head = document.createElement('div');
+    head.className = 'theme-head';
+
+    const dot = document.createElement('span');
+    dot.className = 'theme-dot';
+    dot.style.background = t.color;
+
+    const h2 = document.createElement('h2');
+    h2.textContent = t.name;
+
+    const count = document.createElement('span');
+    count.className = 'count';
+    count.textContent = `${items.length} article${items.length > 1 ? 's' : ''}`;
+
+    head.appendChild(dot);
+    head.appendChild(h2);
+    head.appendChild(count);
+    section.appendChild(head);
+
+    items.forEach(it => {
+      const art = document.createElement('article');
+      art.className = 'item';
+      art.style.borderLeftColor = t.color;
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+
+      const country = document.createElement('span');
+      country.className = 'country';
+      country.textContent = it.country;
+      country.style.borderColor = t.color + '55';
+
+      const date = document.createElement('span');
+      date.className = 'date';
+      date.textContent = it.date;
+
+      meta.appendChild(country);
+      meta.appendChild(date);
+
+      if(it.source){
+        const source = document.createElement('span');
+        source.className = 'source';
+        source.textContent = it.source;
+        meta.appendChild(source);
+      }
+
+      const articleHead = document.createElement('div');
+      articleHead.className = 'article-head';
+
+      const p = document.createElement('p');
+      const lead = document.createElement('span');
+      lead.className = 'lead';
+      lead.textContent = it.lead;
+      p.appendChild(lead);
+      p.appendChild(document.createTextNode(' ' + it.body));
+
+      const favorite = document.createElement('button');
+      favorite.className = 'favorite-btn';
+      favorite.textContent = isFavorite(t.id, it) ? '★' : '☆';
+      favorite.classList.toggle('active', isFavorite(t.id, it));
+      favorite.title = isFavorite(t.id, it) ? 'Retirer des favoris' : 'Ajouter aux favoris';
+      favorite.setAttribute('aria-label', favorite.title);
+      favorite.onclick = () => toggleFavorite(t.id, it);
+
+      articleHead.appendChild(p);
+      articleHead.appendChild(favorite);
+
+      const translation = document.createElement('div');
+      translation.className = 'translation';
+
+      const translationLabel = document.createElement('span');
+      translationLabel.className = 'translation-label';
+      translationLabel.textContent = '🇫🇷 Traduction';
+      translation.appendChild(translationLabel);
+      translation.appendChild(document.createTextNode(it.translation));
+
+      const button = document.createElement('button');
+      button.className = 'translate-btn';
+      button.textContent = 'Afficher la traduction';
+      button.onclick = () => {
+        const visible = translation.classList.toggle('visible');
+        button.textContent = visible ? 'Masquer la traduction' : 'Afficher la traduction';
+      };
+
+      art.appendChild(meta);
+      art.appendChild(articleHead);
+      art.appendChild(button);
+      art.appendChild(translation);
+
+      highlightSearchMatches(meta);
+      highlightSearchMatches(p);
+
+      section.appendChild(art);
+    });
+
+    main.appendChild(section);
+  });
+
+  if(totalResults === 0){
+    const noResults = document.createElement('div');
+    noResults.className = 'no-results';
+    noResults.textContent = favoriteOnly
+      ? 'Aucun article favori ne correspond à ces filtres.'
+      : 'Aucun article ne correspond à votre recherche.';
+    main.appendChild(noResults);
+  }
+}
+
+async function translateAndAddWord(word){
+  const clean = word.trim().replace(/\s+/g, ' ');
+  if(!clean) return;
+
+  const vocab = getVocabulary();
+  const already = vocab.find(v => v.word.toLowerCase() === clean.toLowerCase());
+  if(already){
+    renderVocabulary();
+    return;
+  }
+
+  const addBtn = document.getElementById('add-vocab-btn');
+  addBtn.textContent = 'Traduction…';
+  addBtn.disabled = true;
+
+  try{
+    const url = 'https://api.mymemory.translated.net/get?q=' +
+      encodeURIComponent(clean) + '&langpair=en|fr';
+    const response = await fetch(url);
+    const data = await response.json();
+    const translated = data?.responseData?.translatedText?.trim();
+
+    if(!translated) throw new Error('No translation');
+
+    vocab.unshift({word:clean, translation:translated});
+    saveVocabulary(vocab);
+    renderVocabulary();
+    hideSelectionPopover();
+  }catch(e){
+    addBtn.textContent = 'Traduction introuvable';
+    setTimeout(() => {
+      addBtn.textContent = 'Ajouter au vocabulaire';
+      addBtn.disabled = false;
+    }, 1800);
+    return;
+  }
+
+  addBtn.textContent = 'Ajouter au vocabulaire';
+  addBtn.disabled = false;
+}
+
+function hideSelectionPopover(){
+  const pop = document.getElementById('selection-popover');
+  pop.classList.remove('visible');
+}
+
+function showSelectionPopover(){
+  const selection = window.getSelection();
+  if(!selection || selection.rangeCount === 0 || selection.isCollapsed) return;
+
+  const text = selection.toString().trim();
+  if(!text || text.length > 80) return;
+
+  const range = selection.getRangeAt(0);
+  const common = range.commonAncestorContainer.nodeType === 3
+    ? range.commonAncestorContainer.parentElement
+    : range.commonAncestorContainer;
+
+  if(!common || !common.closest('article.item')) return;
+
+  selectedVocabText = text;
+  const rect = range.getBoundingClientRect();
+  const pop = document.getElementById('selection-popover');
+  pop.style.left = Math.min(Math.max(8, rect.left), window.innerWidth - 190) + 'px';
+  pop.style.top = Math.max(8, rect.top - 48) + 'px';
+  pop.classList.add('visible');
+}
+
+document.addEventListener('mouseup', () => {
+  setTimeout(showSelectionPopover, 20);
+});
+
+document.addEventListener('touchend', () => {
+  setTimeout(showSelectionPopover, 50);
+});
+
+document.addEventListener('mousedown', (event) => {
+  const pop = document.getElementById('selection-popover');
+  if(!pop.contains(event.target)) hideSelectionPopover();
+});
+
+document.getElementById('add-vocab-btn').addEventListener('click', () => {
+  translateAndAddWord(selectedVocabText);
+});
+
+document.getElementById('show-all-btn').addEventListener('click', () => {
+  favoriteOnly = false;
+  render();
+});
+document.getElementById('show-favorites-btn').addEventListener('click', () => {
+  favoriteOnly = true;
+  render();
+});
+
+document.getElementById('vocab-open-btn').addEventListener('click', () => {
+  vocabOpen = !vocabOpen;
+  document.getElementById('vocab-panel').classList.toggle('visible', vocabOpen);
+  document.getElementById('vocab-open-btn').classList.toggle('active', vocabOpen);
+  if(vocabOpen) renderVocabulary();
+});
+
+renderVocabulary();
+
+document.getElementById('search').addEventListener('input', (event) => {
+  searchTerm = event.target.value.trim();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
